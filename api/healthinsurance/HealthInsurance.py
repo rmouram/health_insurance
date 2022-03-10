@@ -1,27 +1,28 @@
 import pickle
 import pandas as pd
 import numpy as np
+import inflection
 
 class HealthInsurance:
     def __init__(self):
         self.home_path = '/home/romulo/Documentos/health_insurance/health_insurance/'
-        self.annual_premium_scaler = pickle.load(open(self.home_path + 'src/features/annual_premium_scaler.pkl'))
-        self.age_scaler = pickle.load(open(self.home_path + 'src/features/annual_premium_scaler.pkl'))
-        self.gender_premium_scaler = pickle.load(open(self.home_path + 'src/features/annual_premium_scaler.pkl'))
-        self.policy_sales_channel_scaler = pickle.load(open(self.home_path + 'src/features/annual_premium_scaler.pkl'))
-        self.region_code_scaler = pickle.load(open(self.home_path + 'src/features/annual_premium_scaler.pkl'))
-        self.vintage_scaler = pickle.load(open(self.home_path + 'src/features/annual_premium_scaler.pkl'))
+        self.annual_premium_scaler = pickle.load(open(self.home_path + 'src/features/annual_premium_scaler.pkl', 'rb'))
+        self.age_scaler = pickle.load(open(self.home_path + 'src/features/age_scaler.pkl', 'rb'))
+        self.gender_scaler = pickle.load(open(self.home_path + 'src/features/gender_scaler.pkl', 'rb'))
+        self.policy_sales_channel_scaler = pickle.load(open(self.home_path + 'src/features/policy_sales_channel_scaler.pkl', 'rb'))
+        self.region_code_scaler = pickle.load(open(self.home_path + 'src/features/region_code_scaler.pkl', 'rb'))
+        self.vintage_scaler = pickle.load(open(self.home_path + 'src/features/vintage_scaler.pkl', 'rb'))
         
     def data_cleaning(self, df1):
-        cols_old = ['id', 'Gender', 'Age', 'Driving_License', 'Region_Code', 'Previously_Insured', 'Vehicle_Age', 'Vehicle_Damage', 'Annual_Premium', 'Policy_Sales_Channel', 'Vintage', 'Response']
+        cols_old = ['id', 'Gender', 'Age', 'Driving_License', 'Region_Code', 'Previously_Insured', 'Vehicle_Age', 'Vehicle_Damage', 'Annual_Premium', 'Policy_Sales_Channel', 'Vintage']
         snakecase = lambda x: inflection.underscore(x)
         cols_new = list(map(snakecase, cols_old))
         # rename
         df1.columns = cols_new
-        
+
         return df1
 
-    def feaure_engineering(self, df2):
+    def feature_engineering(self, df2):
         # vehicle age
         df2['vehicle_age'] = df2['vehicle_age'].apply(lambda x: 'over_2_years' if x == '> 2 Years' else 'between_1_and_2_year' if x == '1-2 Year' else 'below_1_year')
         # vehicle demage
@@ -35,10 +36,10 @@ class HealthInsurance:
         df5['vintage'] = self.vintage_scaler.transform(df5[['vintage']].values)
 
         # gender -- Target Encoding
-        df5.loc[:,'gender'] = df5['gender'].map(self.target_encode_gender_scaler)
+        df5.loc[:,'gender'] = df5['gender'].map(self.gender_scaler)
 
         # region_code -- Target encoding
-        df5.loc[:, 'region_code'] = df5['region_code'].map(self.target_encode_region_code_scaler)
+        df5.loc[:, 'region_code'] = df5['region_code'].map(self.region_code_scaler)
 
         # vehicle_age -- One Hot Encoding / Order Encoding
         df5 = pd.get_dummies(df5, prefix='vehicle_age', columns=['vehicle_age'])
@@ -54,8 +55,8 @@ class HealthInsurance:
     def get_prediction( self, model, original_data, test_data ):
         # model prediction
         pred = model.predict_proba( test_data )
-        
+
         # join prediction into original data
-        original_data['prediction'] = pred
+        original_data['prediction'] = pred[:,1]
         
         return original_data.to_json( orient='records', date_format='iso' )

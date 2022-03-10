@@ -1,10 +1,10 @@
 import pickle
 import pandas as pd
 from flask import Flask, request, Response
-from healthinsurante import HealthInsurance
+from healthinsurance.HealthInsurance import HealthInsurance
 
 # loading model
-path = '/home/romulo/Documentos/health_insurance/health_insurance/'
+path = '/home/romulo/Documentos/health_insurance/health_insurance/src/'
 model = pickle.load ( open(path + 'models/model_linear_regression.pkl', 'rb'))
 
 app = Flask(__name__)
@@ -17,12 +17,12 @@ def health_insurance_predict():
         if isinstance(test_json, dict): #unique exemple
             test_raw = pd.DataFrame(test_json, index=[0])
         else: #multiple exemple
-            test_raw = pd.DatFrame(test_json, columns=test_json[0].keys())
+            test_raw = pd.DataFrame(test_json, columns=test_json[0].keys())
     
         pipeline = HealthInsurance()
         
         df1 = pipeline.data_cleaning(test_raw)
-        df2 = pipeline.feaure_engineering(df1)
+        df2 = pipeline.feature_engineering(df1)
         df3 = pipeline.data_preparation(df2)
         df_response = pipeline.get_prediction(model, test_raw, df3)
         
