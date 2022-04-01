@@ -58,11 +58,12 @@ My strategy to solve this challenge was:
 
 # 6. Machine Learning Modelo Performance
 
-            Model	           Precision_at_k	      Recall_at_k	       F1-Score_at_k	 ROC_AUC_Score
-3	XGBoost Classifier CV	    0.4112 +/- 0.0059	0.122 +/- 0.0018	0.1884 +/- 0.0028	0.8520 +/- 0.0011
-2	Random Forest Classifier CV	0.3564 +/- 0.0085	0.1056 +/- 0.0026	0.1628 +/- 0.0039	0.8310 +/- 0.0015
-1	K Neighbors Classifier CV	0.3362 +/- 0.0072	0.0998 +/- 0.0021	0.1540 +/- 0.0033	0.7794 +/- 0.001
-0	Logistic Regression CV	    0.2872 +/- 0.0133	0.085 +/- 0.0037	0.1312 +/- 0.0058	0.8168 +/- 0.0013
+|            Model	            |     Precision_at_k  |     Recall_at_k   |   F1-Score_at_k	  |  ROC_AUC_Score    |
+| ------------------------------|---------------------|-------------------|-------------------|------------------ |
+|   XGBoost Classifier CV	    |  0.4112 +/- 0.0059  |	0.122 +/- 0.0018  |	0.1884 +/- 0.0028 |	0.8520 +/- 0.0011 |
+|	Random Forest Classifier CV |	0.3564 +/- 0.0085 |	0.1056 +/- 0.0026 |	0.1628 +/- 0.0039 |	0.8310 +/- 0.0015 |
+|	K Neighbors Classifier CV   |	0.3362 +/- 0.0072 |	0.0998 +/- 0.0021 |	0.1540 +/- 0.0033 |	0.7794 +/- 0.001  |
+|	Logistic Regression CV	    | 0.2872 +/- 0.0133   |	0.085 +/- 0.0037  |	0.1312 +/- 0.0058 |	0.8168 +/- 0.0013 |
 
 - Desta forma, destaca-se o desempenho do modelo XGBoost que teve metricas de ROC UAC Score, F1-Score, Precision e Recall maiores que todos os outros, por isso foi o escolhido para dar seguimento ao projeto.
 
