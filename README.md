@@ -4,6 +4,11 @@
 
 #### This project was made by Rômulo Moura
 
+# Deploy:
+O deploy foi realizado no heroku, e utilizei o google sheets para exemplicar o uso.
+- Link: https://docs.google.com/spreadsheets/d/1YCp-AGDPBr6tPzpWNjnTkqSxXAByz3GrEOt2qqCLu4U/edit?usp=sharing
+Neste link há uma tabela com exemplos de clientes. Há um botão chamado PropensityScore ao lado de ajuda no menu. Ao clicar neste botão, a propensity score de cada cliente é calculada, assim podemos ver quem mais facilmente poderá adquirir o seguro.
+
 # 1. Business Problem.
 A empresa fictícia Insurance All é uma seguradora de saúde. Esta empresa decidiu incorporar um segundo seguro em seus serviços. A empresa resolveu disponibilizar
 um seguro automotivo, e para isso precisa analisar com seus clientes quem está disposto a adquirir este porduto. O objetivo deste projeto é dado uma lista de clientes
