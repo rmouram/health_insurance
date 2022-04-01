@@ -4,11 +4,6 @@
 
 #### This project was made by Rômulo Moura
 
-# Deploy:
-O deploy foi realizado no heroku, e utilizei o google sheets para exemplicar o uso.
-- Link: https://docs.google.com/spreadsheets/d/1YCp-AGDPBr6tPzpWNjnTkqSxXAByz3GrEOt2qqCLu4U/edit?usp=sharing
-Neste link há uma tabela com exemplos de clientes. Há um botão chamado PropensityScore ao lado de ajuda no menu. Ao clicar neste botão, a propensity score de cada cliente é calculada, assim podemos ver quem mais facilmente poderá adquirir o seguro.
-
 # 1. Business Problem.
 A empresa fictícia Insurance All é uma seguradora de saúde. Esta empresa decidiu incorporar um segundo seguro em seus serviços. A empresa resolveu disponibilizar
 um seguro automotivo, e para isso precisa analisar com seus clientes quem está disposto a adquirir este porduto. O objetivo deste projeto é dado uma lista de clientes
@@ -89,6 +84,14 @@ Como próximos passos podemos incluir e/ou mudar algumas coisas:
 - Fazer uma análise exploratória para ajudar a selecionar melhor as features.
 - Estudar a aplicação de PCA.
 - Fazer transformações de dados diferentes para testar.
+
+# 11. Deploy:
+O deploy foi realizado no heroku, e utilizei o google sheets para exemplicar o uso. Foi criada uma tabela com exemplos de clientes. Há um botão chamado PropensityScore ao lado de ajuda no menu depois em Get Prediction. Ao clicar neste botão, a propensity score de cada cliente é calculada automaticamente, assim podemos ver quem mais facilmente poderá adquirir o seguro.
+
+
+![d1](https://user-images.githubusercontent.com/28973566/161330482-8c58b34a-ecf0-4c4b-8a82-5fad6f1cc78d.png)
+
+![d2](https://user-images.githubusercontent.com/28973566/161330495-d967568d-6638-40c1-9243-c0f23b1939a3.png)
 
 # LICENSE
 
