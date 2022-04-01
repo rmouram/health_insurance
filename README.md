@@ -1,8 +1,8 @@
 # Health Insurance Cross-Sell
 
-## This project aims to order a potential client list by propensity score
+## Este projeto visa ordenar uma lista de potenciais clientes por propensity score
 
-#### This project was made by {cookiecutter.author}}.
+#### This project was made by Rômulo Moura
 
 # 1. Business Problem.
 A empresa fictícia Insurance All é uma seguradora de saúde. Esta empresa decidiu incorporar um segundo seguro em seus serviços. A empresa resolveu disponibilizar
